@@ -1,30 +1,30 @@
 #################################################################################
-# Welcome to Awesome Privacy!                                                   #
-# This file contains all data for all listed categories, sections and services  #
-# It's used to generate both the README.md and the website, awesome-privacy.xyz #
+# 欢迎来到 Awesome Privacy！                                                     #
+# 本文件包含所有已列出类别、分区和服务的数据                                   #
+# 用于生成 README.md 和网站 awesome-privacy.xyz                                 #
 #                                                                               #
-# USAGE COMMANDS                                                                #
-# `make validate` - Check this file is valid YAML and fits the schema           #
-# `make generate` - Generate + insert content into the README.md                #
+# 使用命令                                                                       #
+# `make validate` - 检查此文件是否为有效的 YAML 并符合 schema                   #
+# `make generate` - 生成并插入内容到 README.md                                   #
 #                                                                               #
-# EDITING                                                                       #
-# Please read the CONTRIBUTING.md before submitting any changes to this file    #
+# 编辑说明                                                                       #
+# 在提交对此文件的任何更改前，请阅读 CONTRIBUTING.md                             #
 #                                                                               #
-# ADDING SERVICE                                                                #
-# If you're adding a new listing, the following fields are accepted:            #
-#  - name: string (required) - The name of the service                          #
-#  - description: string (required) - A brief description of the service        #
-#  - url: string (required) - The URL of the service                            #
-#  - github: string - The GitHub repository of the service (user/repo-name)     #
-#  - icon: string - The URL of the service's icon                               #
-#  - followWith: string - Some categories need a prefix (e.g. platform)         #
-#  - securityAudited: boolean - Has the service has been publicly audited       #
-#  - openSource: boolean - Whether the service is fully open source             #
-#  - acceptsCrypto: boolean - Whether the service accepts anonymous payment     #
-#  - tosdrId: string - The ID of the service on ToS;DR  (find at tosdr.org)     #
+# 添加服务                                                                       #
+# 如果你要添加新条目，可接受以下字段：                                           #
+#  - name: string (必填) - 服务名称                                              #
+#  - description: string (必填) - 服务简要描述                                   #
+#  - url: string (必填) - 服务网址                                               #
+#  - github: string - 服务的 GitHub 仓库（user/repo-name）                       #
+#  - icon: string - 服务图标的 URL                                               #
+#  - followWith: string - 某些类别需要前缀（如平台）                             #
+#  - securityAudited: boolean - 服务是否经过公开安全审计                         #
+#  - openSource: boolean - 服务是否完全开源                                       #
+#  - acceptsCrypto: boolean - 是否接受匿名加密货币支付                            #
+#  - tosdrId: string - 服务在 ToS;DR 上的 ID（可在 tosdr.org 查找）               #
 #                                                                               #
 #################################################################################
-# Licensed under CC0-1.0 (C) Alicia Sykes <https://aliciasykes.com> 2019 - 2024 #
+# 许可协议：CC0-1.0 (C) Alicia Sykes <https://aliciasykes.com> 2019 - 2024      #
 #################################################################################
 
 categories:
