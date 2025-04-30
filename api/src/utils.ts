@@ -6,7 +6,7 @@ import type { AwesomePrivacy, Service } from './types';
 export const slugify = (title: string): string => title.toLowerCase().replace(/\s+/g, '-');
 
 /* Base path, for fetching static files from GitHub CDN */
-const ghCdnRoot = 'https://raw.githubusercontent.com/Lissy93/awesome-privacy';
+const ghCdnRoot = 'https://raw.githubusercontent.com/zituoguan/suzhiditu';
 
 /* Fetches and parses Awesome Privacy source data from GitHub CDN */
 export const fetchAwesomePrivacyData = async (): Promise<AwesomePrivacy> => {

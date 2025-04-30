@@ -19,7 +19,7 @@ interface LineNumberData {
   };
 }
 
-const awesomePrivacyYamlPath = 'https://raw.githubusercontent.com/Lissy93/awesome-privacy/main/awesome-privacy.yml';
+const awesomePrivacyYamlPath = 'https://raw.githubusercontent.com/zituoguan/shuziditu/main/awesome-privacy.yml';
 
 /**
  * Given a service object and an array of string lines from the raw YAML

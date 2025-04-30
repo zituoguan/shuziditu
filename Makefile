@@ -1,38 +1,37 @@
+#########################################################################
+# 欢迎来到 Awesome Privacy!                                              #
+# 本文件包含了项目（lib 和 web）的所有命令                              #
+#                                                                       #
+# lib 命令:                                                             #
+# make install_lib_deps - 安装 lib/ 的 Python 依赖                      #
+# make validate - 使用 schema 校验 awesome-privacy.yml                  #
+# make gen_readme - 从 awesome-privacy.yml 生成 README.md               #
+#                                                                       #
+# web 命令:                                                             #
+# make install_web_deps - 安装网站的 NPM 依赖                           #
+# make build_web - 构建静态网站（输出到 web/dist/）                     #
+# make start_web - 启动 web 服务器以服务静态网站                        #
+#                                                                       #
+# 更多文档请参考 GitHub 仓库：                                           #
+# https://github.com/lissy93/awesome-privacy 或 awesome-privacy.xyz     #
+#                                                                       #
+#########################################################################
+# 版权归 Alicia Sykes <https://aliciasykes.com>，采用 CC0-1.0 许可       #
+#########################################################################
 
-#########################################################################
-# Welcome to Awesome Privacy!                                           #
-# This file contains all the commands for the project (in lib and web)  #
-#                                                                       #
-# lib commands:                                                         #
-# make install_lib_deps - Install Python dependencies for lib/          #
-# make validate - Validates awesome-privacy.yml against the schema      #
-# make gen_readme - Generate README.md from awesome-privacy.yml         #
-#                                                                       #
-# web commands:                                                         #
-# make install_web_deps - Install NPM dependencies for the website      #
-# make build_web - Build the static website (outputs to web/dist/)      #
-# make start_web - Starts a webserver to serve the static website       #
-#                                                                       #
-# For further documentation, please reference the GitHub repository.    #
-# https://github.com/lissy93/awesome-privacy or awesome-privacy.xyz     #
-#                                                                       #
-#########################################################################
-# Licensed under CC0-1.0 (C) Alicia Sykes <https://aliciasykes.com>     #
-#########################################################################
-
-# Targets
+# 目标
 .PHONY: all \
-    install_lib_deps gen_readme validate lib \
-    install_web_deps build_web start_web web
+	install_lib_deps gen_readme validate lib \
+	install_web_deps build_web start_web web
 
-# Get Python bin
+# 获取 Python 路径
 PYTHON := $(shell which python3 2>/dev/null || which python)
 
-# Directory Locations
+# 目录位置
 LIB_DIR := lib
 WEB_DIR := web
 
-# Targets for lib/
+# lib/ 相关目标
 install_lib_deps:
 	$(PYTHON) -m pip install -r $(LIB_DIR)/requirements.txt
 
@@ -44,7 +43,7 @@ validate: install_lib_deps
 
 lib: install_lib_deps validate gen_readme
 
-# Targets for web/
+# web/ 相关目标
 install_web_deps:
 	cd $(WEB_DIR) && yarn install
 

@@ -3,7 +3,7 @@ import yaml from 'js-yaml';
 
 import type { AwesomePrivacy } from '../../types/Service';
 
-const awesomePrivacyYamlPath = 'https://raw.githubusercontent.com/Lissy93/awesome-privacy/main/awesome-privacy.yml';
+const awesomePrivacyYamlPath = 'https://raw.githubusercontent.com/zituoguan/shuziditu/main/awesome-privacy.yml';
 
 export const GET: APIRoute = async () => {
 

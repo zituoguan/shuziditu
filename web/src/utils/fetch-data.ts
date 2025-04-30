@@ -3,7 +3,7 @@ import yaml from 'js-yaml';
 
 import type { AwesomePrivacy } from '../types/Service';
 
-const awesomePrivacyData = 'https://raw.githubusercontent.com/Lissy93/awesome-privacy/main/awesome-privacy.yml';
+const awesomePrivacyData = 'https://raw.githubusercontent.com/zituoguan/shuziditu/main/awesome-privacy.yml';
 
 export const fetchData = async (): Promise<AwesomePrivacy> => {
   return await fetch(awesomePrivacyData)
