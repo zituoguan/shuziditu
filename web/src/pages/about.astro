@@ -9,58 +9,30 @@ import { authorProjects, authorSocials,   aboutOurData, projectRequirements, app
 
 const contributorsResource = async () => {
 	const url = 'https://api.github.com/repos/lissy93/personal-security-checklist/contributors?per_page=100';
-	try {
-		// 明确定义 headers 类型为 Record<string, string>
-		const headers: Record<string, string> = {};
-		if (process.env.GITHUB_TOKEN) {
-			headers['Authorization'] = `token ${process.env.GITHUB_TOKEN}`;
-		}
-		const response = await fetch(url, { headers }); // 现在 headers 类型明确
-		if (!response.ok) {
-			console.error(`Failed to fetch contributors: ${response.status} ${response.statusText}`);
-			return []; // 在 HTTP 错误时返回空数组
-		}
-		return await response.json();
-	} catch (error) {
-		console.error('Network error fetching contributors:', error);
-		return []; // 在网络错误等情况下返回空数组
+	const response = await fetch(url);
+	if (!response.ok) {
+		throw new Error('Failed to fetch contributors');
 	}
+	return await response.json();
 };
 
 const sponsorsResource = async () => {
 	const url = 'https://github-sponsors.as93.workers.dev/lissy93';
-	try {
-		const response = await fetch(url);
-		if (!response.ok) {
-			console.error(`Failed to fetch sponsors: ${response.status} ${response.statusText}`);
-			return []; // 在错误时返回空数组
-		}
-		return await response.json();
-	} catch (error) {
-		console.error('Network error fetching sponsors:', error);
-		return []; // 在网络错误等情况下返回空数组
+	const response = await fetch(url);
+	if (!response.ok) {
+		throw new Error('Failed to fetch sponsors');
 	}
+	return await response.json();
 };
 
 const licenseContent = async () => {
 	const url = 'https://raw.githubusercontent.com/Lissy93/awesome-privacy/HEAD/LICENSE';
-	try {
-		const response = await fetch(url);
-		if (!response.ok) {
-			console.error(`Failed to fetch license: ${response.status} ${response.statusText}`);
-			return 'License content could not be loaded.'; // 返回回退文本
-		}
-		return await response.text();
-	} catch (error) {
-		console.error('Network error fetching license:', error);
-		return 'License content could not be loaded.'; // 返回回退文本
+	const response = await fetch(url);
+	if (!response.ok) {
+		throw new Error('Failed to fetch license');
 	}
+	return await response.text();
 };
-
-// 在顶部一次性获取所有数据
-const sponsors = await sponsorsResource();
-const contributors = await contributorsResource();
-const license = await licenseContent();
 
 ---
 
@@ -112,16 +84,14 @@ const license = await licenseContent();
 		<h3 id="sponsors">Sponsors</h3>
 		<p>Huge thanks to the following sponsors, for their ongoing support 💖</p>
 		<div class="user-list">
-			{ Array.isArray(sponsors) && sponsors.length > 0 ? (
-				sponsors.map((sponsor: any) => (
+			{sponsorsResource().then((sponsors) => {
+				return sponsors.map((sponsor: any) => (
 					<a class="user" href={`https://github.com/${sponsor.login}`} target="_blank" rel="noreferrer">
 						<img src={sponsor.avatarUrl} alt={sponsor.login} />
 						<p>{sponsor.name || sponsor.login}</p>
 					</a>
-				))
-			) : (
-				<p>Could not load sponsors at this time.</p>
-			)}
+				));
+			})}
 		</div>
 
 		<h3 id="contributors">Contributors</h3>
@@ -130,16 +100,14 @@ const license = await licenseContent();
 			Special thanks to the below, top-100 contributors 🌟
 		</p>
 		<div class="user-list">
-			{ Array.isArray(contributors) && contributors.length > 0 ? (
-				contributors.map((contributor: any) => (
-					<a class="user" href={contributor.html_url} target="_blank" rel="noreferrer">
-						<img src={contributor.avatar_url} alt={contributor.login} />
-						<p>{contributor.login}</p>
+			{contributorsResource().then((sponsors) => {
+				return sponsors.map((sponsor: any) => (
+					<a class="user" href={sponsor.html_url} target="_blank" rel="noreferrer">
+						<img src={sponsor.avatar_url} alt={sponsor.login} />
+						<p>{sponsor.login}</p>
 					</a>
-				))
-			) : (
-				<p>Could not load contributors at this time.</p>
-			)}
+				));
+			})}
 		</div>
 
 		<hr />
@@ -225,7 +193,9 @@ const license = await licenseContent();
 			The code for the website is licensed under MIT.
 		</p>
 		<p>
-			<pre class="license-content">{license}</pre>
+			{licenseContent().then((license) => {
+				return (<pre class="license-content">{license}</pre>)
+			})}
 		</p>
 
 	</Main>
