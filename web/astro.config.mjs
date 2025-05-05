@@ -12,13 +12,13 @@ import nodeAdapter from '@astrojs/node';
 import cloudflareAdapter from '@astrojs/cloudflare';
 
 // Determine the deploy target (vercel, netlify, cloudflare, node)
-const deployTarget = import.meta.env.DEPLOY_TARGET || 'vercel';
+const deployTarget = import.meta.env.DEPLOY_TARGET || 'cloudflare';
 
 // Determine the output mode (server or hybrid)
 const output = import.meta.env.OUTPUT || 'hybrid';
 
 // The FQDN of where the site is hosted (used for sitemaps & canonical URLs)
-const site = import.meta.env.SITE_URL || 'https://awesome-privacy.xyz';
+const site = import.meta.env.SITE_URL || 'https://shuziditu.com';
 
 // Initialize Astro integrations
 const integrations = [svelte(), partytown(), sitemap()];
